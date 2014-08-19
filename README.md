@@ -11,7 +11,7 @@ IE6是不支持透明的PNG的。使IE6支持PNG透明的方法有很多,使用I
 
 DD_belatedPNG 支持`backgrond-position`与`background-repeat`。同时DD_belatedPNG还支持`a:hover`属性,以及`<img>`。
 
-You can use PNGs as the SRC of an <IMG/> element or as a background-image property in CSS.
+You can use PNGs as the SRC of an `<IMG/>` element or as a `background-image` property in CSS.
 
 *[DEMO]()*
 
