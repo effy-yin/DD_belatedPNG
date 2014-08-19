@@ -4,16 +4,21 @@ DD_belatedPNG
 A fork of Drew Diller's fantastic [DD_belatedPNG](http://www.dillerdesign.com/experiment/DD_belatedPNG/) IE6 PNG fix.
 
 ## About
+
 DD_belatedPNG 解决IE6下的PNG透明问题。
+IE6是不支持透明的PNG的。使IE6支持PNG透明的方法有很多,使用IE特有的滤镜、expression、javascript+透明GIF替代等。但是这些方法都有一个缺点,就是不支持CSS中backgrond-position与background-repeat。
+DD_belatedPNG 支持backgrond-position与background-repeat，这是其他js插件不具备的。
+同时DD_belatedPNG还支持`a:hover`属性,以及`<img>`。
 You can use PNGs as the SRC of an <IMG/> element or as a background-image property in CSS.
 
-IE6是不支持透明的PNG的。使IE6支持PNG透明的方法有很多,使用IE特有的滤镜、expression、javascript+透明GIF替代等。但是这些方法都有一个缺点,就是不支持CSS中backgrond-position与background-repeat。DD_belatedPNG 支持backgrond-position与background-repeat，这是其他js插件不具备的。同时DD_belatedPNG还支持a:hover属性,以及<img>。
-*[DEMO()]*
+*[DEMO]()*
 
 ## How
+
 DD_belatedPNG使用了微软的VML语言进行绘制,而其他多数解决PNG问题的js插件用的是微软的AlphaImageLoader滤镜。
 
 ## Usage
+
 ```html
 <!--[if lte IE 6]>
 <script src="DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
