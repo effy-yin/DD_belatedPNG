@@ -64,9 +64,9 @@ catch(e){}
 
 - You cannot use 'body' as the CSS selector argument for the `fix()` function. The VML is positioned using sibling DOM relationships! You cannot create a previousSibling of `<body>`, so trying to do so fails (badly). As an alternative, you can wrap the contents of the <body> element with a wrapper element, and apply the background style and fix function to that instead. It is not a question of getting it to work, it is a question of performance.
 - `<TR>` and `<TD>` elements do not play nicely yet. Do not attempt.
-- This script does not address `background-position: fixed`; functionality.
-- "Fixed" `<IMG/>` elements must take on `visibility:hidden`;, and thus become unclickable. I see no workaround other than using clear pixel GIF replacements, and that is code that I am not going to write.
-- `<INPUT type="image"/>` nodes are not supported. The node with the original PNG SRC must take on `visibility:hidden`;
+- This script does not address `background-position: fixed;` functionality.
+- "Fixed" `<IMG/>` elements must take on `visibility:hidden;`, and thus become unclickable. I see no workaround other than using clear pixel GIF replacements, and that is code that I am not going to write.
+- `<INPUT type="image"/>` nodes are not supported. The node with the original PNG SRC must take on `visibility:hidden;`
 - The "clickable elements" example boasted in this document may fail when combined with an alpha (opacity) filter. I don't know of a workaround yet.
 - Testing for PNG image presence is done by Javascript string search. If you have a URL that doesn't end in .png, you're not in luck. I suppose I could add a 'force' option - let me know if you need it.
 
