@@ -6,9 +6,11 @@ A fork of Drew Diller's fantastic [DD_belatedPNG](http://www.dillerdesign.com/ex
 ## About
 
 DD_belatedPNG 解决IE6下的PNG透明问题。
-IE6是不支持透明的PNG的。使IE6支持PNG透明的方法有很多,使用IE特有的滤镜、expression、javascript+透明GIF替代等。但是这些方法都有一个缺点,就是不支持CSS中backgrond-position与background-repeat。
-DD_belatedPNG 支持backgrond-position与background-repeat，这是其他js插件不具备的。
-同时DD_belatedPNG还支持`a:hover`属性,以及`<img>`。
+
+IE6是不支持透明的PNG的。使IE6支持PNG透明的方法有很多,使用IE特有的滤镜、expression、javascript+透明GIF替代等。但是这些方法都有一个缺点,就是不支持CSS中`backgrond-position`与`background-repeat`。
+
+DD_belatedPNG 支持`backgrond-position`与`background-repeat`。同时DD_belatedPNG还支持`a:hover`属性,以及`<img>`。
+
 You can use PNGs as the SRC of an <IMG/> element or as a background-image property in CSS.
 
 *[DEMO]()*
@@ -65,6 +67,6 @@ catch(e){}
 - This script does not address `background-position: fixed`; functionality.
 - "Fixed" `<IMG/>` elements must take on `visibility:hidden`;, and thus become unclickable. I see no workaround other than using clear pixel GIF replacements, and that is code that I am not going to write.
 - `<INPUT type="image"/>` nodes are not supported. The node with the original PNG SRC must take on `visibility:hidden`;
--The "clickable elements" example boasted in this document may fail when combined with an alpha (opacity) filter. I don't know of a workaround yet.
+- The "clickable elements" example boasted in this document may fail when combined with an alpha (opacity) filter. I don't know of a workaround yet.
 - Testing for PNG image presence is done by Javascript string search. If you have a URL that doesn't end in .png, you're not in luck. I suppose I could add a 'force' option - let me know if you need it.
 
