@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>DD_belatedPNG: Medicine for your IE6/PNG headache!</title>
+<style type="text/css">
+hr {clear:both; overflow:hidden; height:0px; border:none; visibility:hidden; margin-bottom:20px;}
+code {padding:0px 3px; font-size:100%; background:#58B; font-weight:bold; font-family:"Courier New",sans-serif;}
+.box {display: block;overflow: hidden;position: relative;}
+#tests {width:600px;margin:0 auto;background-color:#336699;color:#fff;padding: 50px 20px;position: relative;}
+#tests .box {margin:0 0 10px 0px; padding:10px; overflow:hidden; border:1px solid #000;}
+.png_bg {background:url(boxbg.png);}
+
+#clickables {background-position:right bottom;}
+#clickables .box {border:none; padding:10px;}
+input.text, select {border:1px inset;}
+input.radio {border:none;}
+input.png_bg {background-position:20px 20px; color:#000;}
+
+a.big_link {position:relative; zoom:1; float:left; margin:8px 5px 0 0; padding:50px; border:0px solid #000; color:#FFF; background-color:red;}
+a.png_bg {background-position:left top; background-repeat:no-repeat;}
+a.png_bg:hover {background-image:url(boxbg2.png); color:#FFF;}
+
+img.png_img {vertical-align:middle;}
+img.img1 {border:5px solid orange;}
+img.img2 {border:none;}
+img.img3 {border:10px solid #333; border-right:10px solid #777; background:#070;}
+#background_conditions_test select, 
+#background_conditions_test input {display:block; float:left; clear:left; width:130px; margin:2px 20px 2px 0;}
+</style>
+</head>
+<body>
+	<div id="tests">
+		<h3><a name="background_properties">CSS Background Properties</a></h3>
+		<p>Use these fields to change background properties.</p>
+		<p>The last field is a text field and will accept 'red' or '#F00' or '#FF0000'.</p>
+		<div id="background_conditions_test" class="png_bg box">
+			<select id="change_background_position" rel="Position">
+				<option>left top</option>
+				<option>left center</option>
+				<option>left bottom</option>
+				<option>right top</option>
+				<option>right center</option>
+				<option>right bottom</option>
+				<option>center top</option>
+				<option>center center</option>
+				<option>center bottom</option>
+				<option>20% top</option>
+				<option>20% center</option>
+				<option>20% bottom</option>
+				<option>20px 30px</option>
+				<option>-20px -30px</option>
+			</select>
+			<select id="change_background_repeat" rel="Repeat">
+				<option>repeat</option>
+				<option>no-repeat</option>
+				<option>repeat-x</option>
+				<option>repeat-y</option>
+			</select>
+			<input id="change_background_color" rel="Color" type="text" value="#FF0000" />
+		</div>
+		<script src='DD_Base.js'></script>
+		<script>
+			var test = DD.dom.id('background_conditions_test');
+			var setup = function() {
+				DD.event.add(this, 'change', function() {
+					var options = this.getElementsByTagName('option');
+					var rel = this.getAttribute('rel');
+					var self = this;
+					DD.fade(test, false, {time:100, end:function() {
+						test.style['background' + rel] = options[self.selectedIndex].innerHTML;
+						DD.fade(test, true, {time:100})
+					}});
+				});
+			};
+			var selects = {position: true, repeat: true};
+			for (var s in selects) {
+				setup.call(DD.dom.id('change_background_' + s));
+			}
+			var changeBgColor = function() {							
+				try {
+					test.style.backgroundColor = this.value;
+				} catch(err) {}
+			};
+			var bgColorTextField = DD.dom.id('change_background_color');
+			DD.event.add(bgColorTextField, 'keyup', changeBgColor);
+			changeBgColor.call(bgColorTextField);
+		</script>
+		<hr>
+		<h3><a name="animation">Javascript Animation</a></h3>
+		<div id="morph" class="png_bg box">
+			Click on me.
+		</div>
+		<hr>
+		<script>
+			var d = 0;
+			var c = 0;
+			var upOrDown = true;
+			var setBorder = function() {
+				var obj = this;
+				var windDown = setInterval(function() {
+					d += upOrDown ? 1 : (-1);
+					if (d >= 0 && d <= 10) {
+						obj.style.borderWidth = d + 'px';
+						c = d%11;
+						if (c == 10) {
+							c = 'A';
+						}
+						c = c.toString();
+						obj.style.marginLeft = d + 'px';
+						obj.style.marginRight = d + 'px';
+						obj.style.backgroundColor = '#' + c + c + c;
+						obj.style.fontSize = (100 + (d*5)) + '%';
+					}
+					else {
+						upOrDown = !upOrDown;
+						clearInterval(windDown);
+					}
+				}, 10);
+			};
+			var morph = DD.dom.id('morph');
+			DD.event.add(morph, 'click', function() {
+				setBorder.call(morph);
+			});
+		</script>
+		<h3><a name="clickable">Clickable Elements</a></h3>
+		<p>Since AlphaImageLoader is not used, this approach doesn't appear to suffer from any of that filter's known layering issues.</p>
+		<p>You can click elements to your heart's content!</p>
+		<p>Be wary, mixing in an opacity filter may UNDO this beneficial feature!</p>
+		<div class="box png_bg" id="clickables">
+			<div class="box">
+				<a href="http://www.google.com">A link to Google</a>
+			</div>
+			<div class="box">
+				<input type="text" value="A text input...." class="text"/>&#160;<input type="text" value="...with a PNG image!" class="png_bg text"/><br>
+			</div>
+			<div class="box">
+				<select>
+					<option>How about a &#60;SELECT&#62;?</option>
+					<option>Yep, still works.</option>
+				</select>
+			</div>
+			<div class="box">
+				Radios work as well:
+				<input type="radio" name="blah" class="radio"/>
+				<input type="radio" name="blah" class="radio"/>
+			</div>
+		</div>
+		<hr>
+		<h3><a name="img_support"><code>&#60;IMG/&#62;</code> Support</a></h3>
+		<p>No pixel GIFs!</p>
+		<img src="boxbg.png" class="png_img img1"/> <img src="boxbg2.png" class="png_img img2"/> <img src="boxbg2.png" class="png_img img3"/>
+		<hr>
+		<h3><a name="pseudo_class"><code>A:hover</code> Psuedo-Class Support</a></h3>
+		<p>Run your mouse over these:</p>
+		<a href="#nogo" class="big_link png_bg">psuedo</a>
+		<a href="#nogo" class="big_link png_bg">class</a>
+
+	</div>
+	<!--[if IE 6]>
+	<script type="text/javascript" src="../DD_belatedPNG.js"></script>	
+	<script type="text/javascript">
+	DD_belatedPNG.fix('.png_bg, img');
+	</script>
+	<![endif]-->
+</body>
+</html>

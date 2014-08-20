@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DD_belatedPNG examples</title>
+    <style>
+      body {background-color:#121212;text-align:center;padding:1em 0 2em 0;color:#BBE9E1;font-family:"Helvetica Neue", sans-serif;text-rendering:optimizeLegibility}
+        p {text-transform:uppercase;color:#555;font-weight:bold}
+        table {margin:0 auto;border-collapse:collapse;border:1px solid #333}
+          th {border-right:1px solid #333;border-bottom:1px solid #333}
+          th, td {width:210px;padding:27px 10px}
+          thead th {padding-top:9px;padding-bottom:9px}
+          tbody th {font-weight:normal}
+            /*Images*/
+            .bg-image, .bg-sprite {margin:0 auto;display:block;width:36px;height:36px}
+            .bg-image {background:url(icon.png?1234) 0 0 no-repeat}
+            .bg-sprite {background:url(icon-sprite.png?1234) -5px 0 no-repeat;text-decoration:none}
+            .bg-sprite:hover {background-position:-61px 0}
+    </style>
+  </head>
+  <body>
+      <h1>Examples of usage</h1>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Unfixed</th>
+            <th scope="col">Fixed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Background image</th>
+            <td>
+              <span class="bg-image"></span>
+            </td>
+            <td>
+              <span class="bg-image fix"></span>
+            </td>
+          </tr>
+          <tr>
+            <th>Background sprite</th>
+            <td>
+              <a href="#" class="bg-sprite">&nbsp;</a>
+            </td>
+            <td>
+              <a href="#" class="bg-sprite fix">&nbsp;</a>
+            </td>
+          </tr>
+          <tr>
+            <th>Image element (standard)</th>
+            <td>
+              <img src="icon.png?1234" width="36" height="36" />
+            </td>
+            <td>
+              <img src="icon.png?1234" width="36" height="36" class="fix" />
+            </td>
+          </tr>
+          <tr>
+            <th>Image element (resized)</th>
+            <td>
+              <img src="icon-larger.png?1234" width="36" height="36" />
+            </td>
+            <td>
+              <img src="icon-larger.png?1234" width="36" height="36" class="fix" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!--[if IE 6]>
+      <script src="../DD_belatedPNG.js"></script>
+      <script>
+        window.onload = function() {
+          DD_belatedPNG.fix('.fix');
+        }
+      </script>
+      <![endif]-->
+  </body>
+</html>

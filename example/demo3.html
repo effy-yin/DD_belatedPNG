@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>DD_belatedPNG example</title>
+	<style type="text/css">
+.example{
+	width:600px;
+	height:400px;
+	float:left;
+	background:url(bg.jpg) no-repeat 0 0;
+	position:relative;
+}
+.trans{
+	position:absolute;
+	width:200px;
+	height:50px;
+	top:200px;
+	left:200px;
+	color:#fff;
+	font-size:18px;
+	font-family:Georgia;
+	background:url(trans.png) repeat;
+}
+.box{
+	position:absolute;
+	top:100px;
+	left:200px;
+}
+.box a{
+	display:block;
+	width:80px;
+	height:80px;
+	color:#fff;
+	font-size:12px;
+}
+.box a:hover{
+	background:url(boxbg.png) no-repeat left top;
+}
+	</style>
+</head>
+<body>
+<div class="example">
+	<div class="trans">Damn IE6!这是repeat的PNG</div>
+	<div class="box"><a href="#">请把鼠标移到这里 测试a:hover</a></div>
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="../DD_belatedPNG.js" ></script>	
+<script type="text/javascript">
+DD_belatedPNG.fix('.trans,.box a:hover');
+</script>
+<![endif]-->
+</body>
+</html>
