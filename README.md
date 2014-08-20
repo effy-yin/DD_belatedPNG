@@ -22,7 +22,7 @@ DD_belatedPNG使用了微软的VML语言进行绘制,而其他多数解决PNG问
 ## Usage
 
 ```html
-<!--[if lte IE 6]>
+<!--[if IE 6]>
 <script src="DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
 <script type="text/javascript">
 DD_belatedPNG.fix('div, ul, img, li, input , a, .png_bg, a:hover');
